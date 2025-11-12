@@ -1,0 +1,10 @@
+<li>
+    <a href="{{ item.get_url }}" class="{% if active_item_id and item.id == active_item_id %}active{% endif %}">{{ item.title }}</a>
+    {% if item.children_list and item.id in expanded_ids %}
+        <ul>
+            {% for child in item.children_list %}
+                {% include 'tree_menu/menu_item.html' with item=child expanded_ids=expanded_ids active_item_id=active_item_id %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
